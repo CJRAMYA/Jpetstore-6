@@ -27,19 +27,19 @@ pipeline {
       }
     }
 	 stage('Publication') {
-      steps {
+    steps {
         nexusArtifactUploader(
 		nexusVersion: 'nexus3', 
 		protocol: 'http', 
 		nexusUrl: 'localhost:8081', 
 		groupId: 'org.mybatis', 
-		version: '0.0.1-SNAPSHOT', 
-		repository: 'maven-snapshots', 
-		credentialsId: 'bdf8ef1a-2969-48a6-9e45-a265ae641a8a', 
+		version: '30', 
+		repository: 'maven-releases', 
+		credentialsId: 'nexus', 
 		artifacts: [[
 		artifactId: 'jpetstore', 
 		type: 'war', 
-		file: 'target/jpetstore-0.0.1-SNAPSHOT.war']])
+		file: 'target/jpetstore.war']])
       }
     }
   }
